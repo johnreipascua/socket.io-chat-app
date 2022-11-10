@@ -25,11 +25,17 @@ io.on('connection', (socket) => {
     socket.on('join', ({ username, room }) => {
         user = username;
         roomId = room;
-        console.log(`${username} joined room ${room}`)
 
         const message = { notif: `${username} joined the room.` }
         socket.join(room);
         socket.to(room).emit('receive', message);
+    });
+
+    socket.on('leave', ({ username, room }) => {
+
+        const message = { notif: `${username} left the room.` }
+        socket.to(room).emit('receive', message);
+        socket.leave(room);
     });
 
     socket.on('send', message => {

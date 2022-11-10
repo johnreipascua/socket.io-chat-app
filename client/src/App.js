@@ -9,7 +9,7 @@ import { Container } from 'reactstrap';
 import BounceLoader from "react-spinners/BounceLoader";
 
 const server = process.env.REACT_APP_SERVER || 'http://localhost:5000';
-const socket = io.connect(server);
+const socket = io(server, { transports: ['websocket', 'polling', 'flashsocket'] });
 
 function App() {
     const [username, setUsername] = useState('');
@@ -37,10 +37,9 @@ function App() {
     }
 
     const leaveRoom = () => {
-        setRoom('');
         setJoined(false);
-        socket.disconnect();
-        socket.connect(server)
+        socket.emit('leave', { username, room });
+        setRoom('');
     }
 
     return (
