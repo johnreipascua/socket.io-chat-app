@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.loading {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.navbar {
+  z-index: 2;
+}
+
+.nav-item {
+  cursor: pointer;
+}
+
+.min-width {
+  width: min(90%, 600px);
+}
+
+.max-height {
+  height: calc(100vh - 56px);
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.form-control:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+} 
+
+.card {
+  border-top: none;
+}
+
+button svg {
+  display: flex;
+  vertical-align: middle;
+}
+
+.scroll {
+  width: 100%;
+  height: calc(100vh - 111px);
+  padding: 20px;
+}
